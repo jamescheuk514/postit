@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140703095710) do
     t.integer  "post_id"
   end
 
-  create_table "postcategories", force: true do |t|
+  create_table "post_categories", force: true do |t|
     t.integer "post_id"
     t.integer "category_id"
   end
