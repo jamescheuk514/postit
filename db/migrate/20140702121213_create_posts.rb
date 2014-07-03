@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.text :description
-      end
+      t.timestamps
+    end
   end
 end
