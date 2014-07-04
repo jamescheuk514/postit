@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-			#redirect
+			redirect_to @post
     else
       render 'new'
     end
@@ -27,21 +27,25 @@ class PostsController < ApplicationController
   end
 
 	def update
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      render 'edit'
+    end
 	end
 
 	def destroy
-	end
-
-	def method_name
+    if @post.destroy
+      render 'index'
+    end
 	end
 
 	private
-	def find_post
-		@post = Post.find(params[:id])
-	end
+  	def find_post
+  		@post = Post.find(params[:id])
+  	end
 
-	def post_params
-		params.require(:post).permit(:title, :url, :description)
-	end
-
+  	def post_params
+  		params.require(:post).permit(:title, :url, :description)
+  	end
 end
