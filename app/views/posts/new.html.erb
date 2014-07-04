@@ -1,4 +1,36 @@
-<%= form_for do %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Creating a new post</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <%= form_for @post do |f| %>
 
+          <%= f.label :title %>
+          <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <%= f.text_field :title, class:"form-control" %>
+          </div></br>
 
-<% end %>
+          <%= f.label :url %>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-link"></span>
+            </span>
+            <%= f.url_field :url, class:"form-control" %>
+          </div></br>
+
+          <%= f.label :description %>
+          <div class="input-group">
+            <span class="glyphicon glyphicon-hand-down"></span>
+            <%= f.text_area :description, class:"form-control" %>
+          </div></br>
+
+          <%= f.submit "Create post", class:"btn btn-primary" %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

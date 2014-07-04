@@ -4,7 +4,7 @@
     <div class="well">
 
       <%= render post.categories %>
-      <%= render @posts %>
+      <%= render post %>
 
       <small>
         <%= link_to pluralize(post.comments.size, 'comment'), post %>
