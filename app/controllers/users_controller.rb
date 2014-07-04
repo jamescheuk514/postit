@@ -13,9 +13,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    if @user.save == true
-      # redirect
+    @user = User.new(user_params)
+    if @user.save
+      flash[:sccess] = "Welcome"
+      redirect_to @user
     else
       render 'new'
     end
@@ -25,10 +26,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    # @user.update_attribute(user_params)
+    if @user.update(user_params)
+      flash[:success] = "Updated successful"
+      redirect_to @user
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    if @user.destroy
+      flash[:success] = "Deleted successful"
+      redirect_to "index"
+    end
   end
 
   private

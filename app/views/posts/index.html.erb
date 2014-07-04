@@ -1,4 +1,4 @@
-<h>Listing Posts</h3>
+<h3>Listing Posts</h3>
 
 <% @posts.each do |post| %>
     <div class="well">
@@ -11,8 +11,6 @@
       </small>
       <small>
         <%= link_to 'edit', edit_post_path(post) %>
-      <small>
+      </small>
     </div>
 <% end %>
-
-<br>

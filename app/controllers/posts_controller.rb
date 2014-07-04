@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update]
+  # before_action :sign_in
 
   def index
     @posts = Post.all
   end
 
 	def show
-	end
+
+	  @comment = Comment.new
+  end
 
 	def new
 

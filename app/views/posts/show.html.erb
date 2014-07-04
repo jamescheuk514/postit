@@ -1,3 +1,21 @@
-<span class="glyphicon glyphicon-tags"></span>
+<div class="well">
+  <span class="glyphicon glyphicon-tags"></span>
 <%= render @post.categories %>
 <%= render @post %>
+
+
+<%= link_to "Go back to all posts", posts_path %>
+
+</div>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :body, "Comment" %>
+  <div class="input-group">
+    <span class="glyphicon glyphicon-pencil"></span>
+    <%= f.text_area :body, class:"form-control" %>
+  </div></br>
+
+  <%= f.submit "Submit", class:"btn btn-primary" %>
+<% end %>
+
+<%= render @post.comments %>
