@@ -1,10 +1,16 @@
 <h4>
-  <%= link_to post.url do %>
-    <%= post.title %> <span class="label label-default">New</span><!-- TODO: add js to show new label -->
-  <% end %>
-</h4>
-<p><%= post.description %></p>
+  <%= post.title %>
+  <% url = ActionDispatch::Http::URL.extract_subdomains(post.url) %>
+  <small>(<%= link_to (url[1]), post.url %>)</small>
+</h4>f
 <p>
-  <span class="quiet">posted by</span> <%= post.creator.username %>
-  <small>at <%= time_tag post.created_at %></small>
+  <%= post.description %>
+</p>
+<p>
+  <small class="quiet">
+    by <%= post.creator.username %>
+    <%= distance_of_time_in_words_to_now(post.created_at) %> ago |
+    <%= link_to pluralize(post.comments.size, "comment"), post_path(post)%> |
+    <%= link_to 'edit', edit_post_path(post) %>
+  </small>
 </p>

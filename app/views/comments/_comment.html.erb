@@ -1,2 +1,11 @@
-<%= comment.body %>
-<%= comment.creator %>
+<div class="well">
+	<p>
+		<%= comment.body %>
+	</p>
+	<p>
+		<small class="quiet">
+			by <%= comment.creator.username %>
+			<%= distance_of_time_in_words_to_now(comment.created_at) %> ago
+		</small>
+	</p>
+</div>

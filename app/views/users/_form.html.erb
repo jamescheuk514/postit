@@ -1,0 +1,21 @@
+<%= form_for @user do |f| %>
+  <%= render "shared/errors", object: @user %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <%= f.label :username %>
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <%= f.text_field :username, class:"form-control" %>
+      </div></br>
+      <%= f.label :password %>
+      <div class="input-group">
+        <%= f.password_field :password, class:"form-control" %>
+      </div></br>
+      <%= f.label :password_confirmation %>
+      <div class="input-group">
+        <%= f.password_field :password_confirmation, class:"form-control" %>
+      </div></br>
+      <%= f.submit "Submit", class:"btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
