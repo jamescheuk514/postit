@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :categories
-
+  resources :categories, only: [:show, :new, :create]
 
 
 end

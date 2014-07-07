@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       flash[:sccess] = "Welcome"
       redirect_to @user
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -30,14 +30,14 @@ class UsersController < ApplicationController
       flash[:success] = "Updated successful"
       redirect_to @user
     else
-      render "edit"
+      render :edit
     end
   end
 
   def destroy
     if @user.destroy
       flash[:success] = "Deleted successful"
-      redirect_to "index"
+      redirect_to :index
     end
   end
 

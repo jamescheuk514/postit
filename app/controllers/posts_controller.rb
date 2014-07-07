@@ -3,11 +3,10 @@ class PostsController < ApplicationController
   # before_action :sign_in
 
   def index
-    @posts = Post.all
+    @posts = Post.order("created_at DESC").all
   end
 
 	def show
-
 	  @comment = Comment.new
   end
 
@@ -18,12 +17,12 @@ class PostsController < ApplicationController
 
 	def create
     @post = Post.new(post_params)
-
+    @post.creator = User.first
     if @post.save
       flash[:success] = "Your post was created."
 			redirect_to posts_path
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -36,22 +35,16 @@ class PostsController < ApplicationController
       flash[:success] = "Updated successful"
       redirect_to @post
     else
-      render 'edit'
+      render :edit
     end
 	end
 
-	def destroy
-    if @post.destroy
-      render 'index'
-    end
+  private
+	def find_post
+		@post = Post.find(params[:id])
 	end
 
-	private
-  	def find_post
-  		@post = Post.find(params[:id])
-  	end
-
-  	def post_params
-  		params.require(:post).permit(:title, :url, :description)
-  	end
+	def post_params
+		params.require(:post).permit(:title, :url, :description, category_ids: [])
+	end
 end

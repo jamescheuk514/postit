@@ -5,12 +5,5 @@
       <span class="glyphicon glyphicon-tags"></span>
       <%= render post.categories %>
       <%= render post %>
-
-      <small>
-        <%= link_to pluralize(post.comments.size, 'comment'), post %>
-      </small>
-      <small>
-        <%= link_to 'edit', edit_post_path(post) %>
-      </small>
     </div>
 <% end %>

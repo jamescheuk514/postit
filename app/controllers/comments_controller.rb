@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
+    @comment.creator = User.first #tmp  
     if @comment.save
       flash[:success] = "Created comment"
       redirect_to post_path(@post)
@@ -12,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:body)
-    end
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end
