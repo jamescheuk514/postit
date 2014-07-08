@@ -4,8 +4,8 @@
   <%= render @post %>
   <%= link_to "Go back to all posts", posts_path %>
   <section>
-    <%= form_for [@post, @comment] do |f| %>
-      <%= render 'shared/errors', object: @comment %> 
+    <%= form_for [@post, @comment], remote: true do |f| %>
+      <%= render 'shared/errors', object: @comment %>
       <%= f.label :body, "Comment" %>
       <div class="input-group">
         <span class="glyphicon glyphicon-pencil"></span>

@@ -18,11 +18,20 @@ class PostsController < ApplicationController
 	def create
     @post = Post.new(post_params)
     @post.creator = User.first
-    if @post.save
-      flash[:success] = "Your post was created."
-			redirect_to posts_path
-    else
-      render :new
+
+    respond_to do |format|
+      format.html do
+        if @post.save
+          flash[:success] = "Your post was created."
+          redirect_to posts_path
+        else
+          render :new
+        end
+      end
+
+      format.js do
+        @post.save
+      end
     end
   end
 

@@ -4,11 +4,21 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.creator = User.first #tmp
-    if @comment.save
-      flash[:success] = "Created comment"
-      redirect_to post_path(@post)
-    else
-      render "posts/show"
+
+    respond_to do |format|
+
+      format.html do
+        if @comment.save
+          flash[:success] = "Created a comment"
+          redirect_to post_path(@post)
+        else
+          render "posts/show"
+        end
+      end
+
+      format.js do
+        @comment.save
+      end
     end
   end
 
