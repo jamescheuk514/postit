@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
+  before_action :signed_in_user
 
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
-    @comment.creator = User.first #tmp
+    @comment.creator = @current_user
 
     respond_to do |format|
 

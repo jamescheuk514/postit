@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.7)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -46,7 +47,7 @@ GEM
       rails (>= 3, < 5)
     hike (1.2.3)
     i18n (0.6.9)
-    jbuilder (2.1.1)
+    jbuilder (2.1.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.1)
@@ -58,7 +59,7 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25.1)
-    minitest (5.3.5)
+    minitest (5.4.0)
     multi_json (1.10.1)
     pg (0.17.1)
     polyglot (0.3.5)
@@ -132,6 +133,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   figaro
