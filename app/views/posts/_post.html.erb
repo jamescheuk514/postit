@@ -1,4 +1,7 @@
-<h4>
+<div class="well">
+  <span class="glyphicon glyphicon-tags"></span>
+  <%= render post.categories %>
+  <h4>
   <%= post.title %>
   <small>(<%= link_to URI(post.url).host, post.url %>)</small>
 </h4>
@@ -7,7 +10,7 @@
 </p>
 <p>
   <small class="quiet">
-    by <%= post.creator.username %>
+    by <%=link_to post.creator.username, user_path(post.creator) %>
     <%= distance_of_time_in_words_to_now(post.created_at) %> ago |
     <%= link_to pluralize(post.comments.size, "comment"), post_path(post)%> |
     <% if logged_in? && current_user?(post.creator) %>
@@ -15,3 +18,4 @@
     <% end %>
   </small>
 </p>
+</div>

@@ -32,6 +32,7 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<% if logged_in? %>
+					<li><%= link_to "edit user", edit_user_path(@current_user) %></li>
 					<li><%= link_to "logout", logout_path %></li>
 				<% else %>
 					<li><%= link_to "register",register_path %></li>

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = "Welcome"
       redirect_to root_path
     else
@@ -22,10 +23,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update(user_params) && @user.authenticate(params[:user][:password])
       flash[:success] = "Updated successful"
       redirect_to @user
     else
+      flash[:warning] = "wrong password!"
       render :edit
     end
   end

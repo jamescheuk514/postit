@@ -1,9 +1,4 @@
-<h3>Listing Posts</h3>
 
 <% @posts.each do |post| %>
-    <div class="well">
-      <span class="glyphicon glyphicon-tags"></span>
-      <%= render post.categories %>
-      <%= render post %>
-    </div>
+    <%= render post %>
 <% end %>
