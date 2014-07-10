@@ -1,21 +1,18 @@
-<div class="well">
-  <span class="glyphicon glyphicon-tags"></span>
-  <%= render @post.categories %>
-  <%= render @post %>
-  <%= link_to "Go back to all posts", posts_path %>
-  <section>
-    <%= form_for [@post, @comment] do |f| %>
-      <%= render 'shared/errors', object: @comment %>
-      <%= f.label :body, "Comment" %>
-      <div class="input-group">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <%= f.text_area :body,cols: 60, rows: 5, class:"form-control" %>
-      </div></br>
+<%= render @post %>
+<%= link_to "Go back to all posts", posts_path %>
+<section>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= render 'shared/errors', object: @comment %>
+    <%= f.label :body, "Comment" %>
+    <div class="input-group">
+      <span class="glyphicon glyphicon-pencil"></span>
+      <%= f.text_area :body,cols: 60, rows: 5, class:"form-control" %>
+    </div></br>
 
-      <%= f.submit "add comment", class:"btn btn-primary" %>
-    <% end %>
-  </section>
-</div>
+    <%= f.submit "add comment", class:"btn btn-primary" %>
+  <% end %>
+</section>
+
 <section>
 <%= render @post.comments %>
 </section>

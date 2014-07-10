@@ -4,4 +4,5 @@ class Comment < ActiveRecord::Base
 
 	validates :body, presence: true
 	validates :post, presence: true
+	validates :creator, presence: true
 end
