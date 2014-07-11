@@ -1,21 +1,31 @@
 <div class="well">
-  <span class="glyphicon glyphicon-tags"></span>
-  <%= render post.categories %>
-  <h4>
-  <%= post.title %>
-  <small>(<%= link_to URI(post.url).host, post.url %>)</small>
-</h4>
-<p>
-  <%= post.description %>
-</p>
-<p>
-  <small class="quiet">
-    by <%=link_to post.creator.username, user_path(post.creator) %>
-    <%= distance_of_time_in_words_to_now(post.created_at) %> ago |
-    <%= link_to pluralize(post.comments.size, "comment"), post_path(post)%> |
-    <% if logged_in? && current_user?(post.creator) %>
-      <%= link_to 'edit', edit_post_path(post) %>
+  <section id="vote">
+    <%= link_to vote_post_path(post, vote: true), method: "post" do %>
+      <span class=" glyphicon glyphicon-chevron-up"></span>
     <% end %>
-  </small>
-</p>
+    <%= link_to vote_post_path(post, vote: false), method: "post" do %>
+      <span class=" glyphicon glyphicon-chevron-down"></span>
+    <% end %>
+  </section>
+
+  <span class="glyphicon glyphicon-tags"></span>
+    <%= render post.categories %>
+  <h4>
+    <%= post.title %>
+    <small>(<%= link_to URI(post.url).host, post.url %>)</small>
+  </h4>
+  <p>
+    <%= post.description %>
+  </p>
+  <p>
+    <small class="quiet">
+      <%= pluralize(post.total_votes, "points") %>
+      by <%=link_to post.creator.username, user_path(post.creator) %>
+      <%= distance_of_time_in_words_to_now(post.created_at) %> ago |
+      <%= link_to pluralize(post.comments.size, "comment"), post_path(post)%> |
+      <% if logged_in? && current_user?(post.creator) %>
+        <%= link_to 'edit', edit_post_path(post) %>
+      <% end %>
+    </small>
+  </p>
 </div>

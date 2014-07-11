@@ -1,6 +1,4 @@
-<div class="page-header">
-  <h1><h1><%= @user.username %>'s</h1></h1>
-</div>
+<h1><%= @user.username %>'s</h1>
 
 
 <ul id="userContentTabs" class="nav nav-tabs" role="tablist">
@@ -21,9 +19,11 @@
   </div>
   <div class="tab-pane fade" id="comments">
     <% @user.comments.each do |comment| %>
-      replied to the post:
-      <%= comment.post.title %>
-      <%= render comment %>
+      <section>
+        replied to the post:
+        <%= comment.post.title %>
+        <%= render comment %>
+      </section>
     <% end %>
   </div>
 </div>

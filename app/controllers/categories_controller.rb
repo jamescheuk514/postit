@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
+	before_action :signed_in_user, only: [:new, :create]
 
-def show
+	def show
 		@category = Category.find(params[:id])
 	end
 
