@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :posts, except: [:destroy] do
     member do
       post :vote
+      delete :undo_vote
     end
     resources :comments, only: [:create]
   end

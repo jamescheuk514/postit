@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   include VotesHelper
-  before_action :find_post, only: [:show, :edit, :update, :vote]
+  before_action :find_post, only: [:show, :edit, :update, :vote, :undo_vote]
   before_action :signed_in_user, except: [:index, :show]
 
   def index
@@ -46,6 +46,12 @@ class PostsController < ApplicationController
       flash[:warning] = "You've voted before."
     end
 
+    redirect_to :back
+  end
+
+  def undo_vote
+    @post.votes.where(user_id: @current_user.id).destroy
+    flash[:success] = "Undo voting"
     redirect_to :back
   end
 

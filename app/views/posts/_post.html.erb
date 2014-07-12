@@ -1,12 +1,7 @@
 <div class="well">
   <section id="vote">
-    <%= link_to vote_post_path(post, vote: true), method: "post" do %>
-      <span class=" glyphicon glyphicon-chevron-up"></span>
-    <% end %>
-    <%= link_to vote_post_path(post, vote: false), method: "post" do %>
-      <span class=" glyphicon glyphicon-chevron-down"></span>
-    <% end %>
-  </section>
+      <%= render partial: "votes/vote_post", locals: { voteable: post, post:post  } %>
+      </section>
 
   <span class="glyphicon glyphicon-tags"></span>
     <%= render post.categories %>
