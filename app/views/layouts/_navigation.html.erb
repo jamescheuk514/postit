@@ -32,6 +32,12 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<% if logged_in? %>
+
+					<p class="navbar-text navbar-right">
+						<small>
+							Signed in as <%= @current_user.username %>
+						</small>
+					</p>
 					<li><%= link_to "edit user", edit_user_path(@current_user) %></li>
 					<li><%= link_to "logout", logout_path %></li>
 				<% else %>

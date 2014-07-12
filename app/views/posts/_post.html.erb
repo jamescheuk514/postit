@@ -1,7 +1,7 @@
 <div class="well">
   <section class="vote">
     <% if logged_in? %>
-      <% if post.votes.where(user_id: current_user.id).blank? %>
+      <% if post.votes.where(user_id: @current_user.id).blank? %>
         <%= link_to vote_post_path(post, vote: true), method: "post" do %>
           <span class=" glyphicon glyphicon-chevron-up"></span>
         <% end %>
@@ -10,7 +10,7 @@
         <% end %>
       <% else %>
         <small>
-          <%= link_to "Undo", undo_vote_post_path(post), method: "delete", data: { confirm: "Are you sure?" } %>
+          <%= link_to "Undo vote", undo_vote_post_path(post), method: "delete", data: { confirm: "Are you sure?" } %>
         </small>
       <% end %>
     <% end %>

@@ -50,4 +50,4 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem "figaro"
+gem "figaro", '1.0.0.rc1'
