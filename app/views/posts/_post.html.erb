@@ -1,7 +1,20 @@
 <div class="well">
-  <section id="vote">
-      <%= render partial: "votes/vote_post", locals: { voteable: post, post:post  } %>
-      </section>
+  <section class="vote">
+    <% if logged_in? %>
+      <% if post.votes.where(user_id: current_user.id).blank? %>
+        <%= link_to vote_post_path(post, vote: true), method: "post" do %>
+          <span class=" glyphicon glyphicon-chevron-up"></span>
+        <% end %>
+        <%= link_to vote_post_path(post, vote: false), method: "post" do %>
+          <span class=" glyphicon glyphicon-chevron-down"></span>
+        <% end %>
+      <% else %>
+        <small>
+          <%= link_to "Undo", undo_vote_post_path(post), method: "delete", data: { confirm: "Are you sure?" } %>
+        </small>
+      <% end %>
+    <% end %>
+  </section>
 
   <span class="glyphicon glyphicon-tags"></span>
     <%= render post.categories %>

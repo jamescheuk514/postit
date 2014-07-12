@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include VotesHelper
+  before_action :find_comment, only: [:vote, :undo_vote]
   before_action :signed_in_user
 
   def create
@@ -23,7 +25,27 @@ class CommentsController < ApplicationController
     end
   end
 
+  def vote
+    @vote = @comment.votes.create(user_id: @current_user.id, vote: params[:vote])
+
+    unless @vote.valid?
+      flash[:warning] = "You've voted before."
+    end
+
+    redirect_to :back
+  end
+
+  def undo_vote
+    @comment.votes.where(user_id: @current_user.id).destroy_all
+    flash[:success] = "Undo voting"
+    redirect_to :back
+  end
+
+
   private
+  def find_comment
+    @comment = Comment.find(params[:id])
+  end
   def comment_params
     params.require(:comment).permit(:body)
   end

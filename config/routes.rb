@@ -13,7 +13,12 @@ Rails.application.routes.draw do
       post :vote
       delete :undo_vote
     end
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      member do
+        post :vote
+        delete :undo_vote
+      end
+    end
   end
 
 

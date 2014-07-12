@@ -3,4 +3,7 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, polymorphic: true
 
   validates_uniqueness_of :creator, scope: :voteable
+  validates :creator, presence: true
+  validates :voteable_type, presence: true
+  validates :voteable_id, presence: true
 end

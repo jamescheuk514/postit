@@ -13,17 +13,25 @@
     <%= image_tag("InProgress.jpg") %>
   </div>
   <div class="tab-pane fade" id="posts">
-    <% @user.posts.each do |post| %>
-      <%= render post %>
+    <% if @user.posts.blank? %>
+      <%= image_tag("InProgress.jpg") %>
+    <% else %>
+      <% @user.posts.each do |post| %>
+        <%= render post %>
+      <% end %>
     <% end %>
   </div>
   <div class="tab-pane fade" id="comments">
-    <% @user.comments.each do |comment| %>
-      <section>
-        replied to the post:
-        <%= comment.post.title %>
-        <%= render comment %>
-      </section>
+    <% if @user.comments.blank? %>
+      <%= image_tag("InProgress.jpg") %>
+    <% else %>
+      <% @user.comments.each do |comment| %>
+        <section>
+          replied to the post:
+          <%= comment.post.title %>
+          <%= render comment %>
+        </section>
+      <% end %>
     <% end %>
   </div>
 </div>

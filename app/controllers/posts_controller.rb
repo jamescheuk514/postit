@@ -45,12 +45,11 @@ class PostsController < ApplicationController
     unless @vote.valid?
       flash[:warning] = "You've voted before."
     end
-
     redirect_to :back
   end
 
   def undo_vote
-    @post.votes.where(user_id: @current_user.id).destroy
+    @post.votes.where(user_id: @current_user.id).destroy_all
     flash[:success] = "Undo voting"
     redirect_to :back
   end
