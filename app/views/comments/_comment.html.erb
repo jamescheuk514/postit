@@ -1,18 +1,5 @@
 <div class="well">
-	<section id="comment_<%= comment.id %>_vote_area" class="vote_area">
-		<% if logged_in? %>
-			<% if comment.voted?(@current_user) %>
-				<%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: "post", remote: true, disable_with: "Submitting…", id: "comment_#{comment.id}_vote_up" do %>
-					<span class=" glyphicon glyphicon-chevron-up"></span>
-				<% end %>
-				<%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: "post", remote: true, disable_with: "Submitting…", id: "comment_#{comment.id}_vote_down" do %>
-					<span class=" glyphicon glyphicon-chevron-down"></span>
-				<% end %>
-			<% else %>
-					<%= link_to "Undo vote", undo_vote_post_comment_path(comment.post, comment), method: "delete", remote: true, disable_with: "Submitting…", id: "comment_#{comment.id}_vote_undo" %>
-			<% end %>
-		<% end %>
-	</section>
+	<%= render partial: '/comments/comment_vote_area', locals: { comment: comment } %>
 	<p>
 		<%= comment.body %>
 	</p>
