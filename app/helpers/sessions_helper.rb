@@ -18,4 +18,12 @@ module SessionsHelper
     end
   end
 
+  def request_admin
+    access_denied unless logged_in? && current_user.admin?
+  end
+
+  def access_denied
+    flash[:warning] = "You can't do that."
+    redirect_to :back
+  end
 end
