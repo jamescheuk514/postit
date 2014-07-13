@@ -9,9 +9,7 @@
 					<span class=" glyphicon glyphicon-chevron-down"></span>
 				<% end %>
 			<% else %>
-				<small>
 					<%= link_to "Undo vote", undo_vote_post_comment_path(comment.post, comment), method: "delete", remote: true, id: "comment_#{comment.id}_vote_undo" %>
-				</small>
 			<% end %>
 		<% end %>
 	</section>
