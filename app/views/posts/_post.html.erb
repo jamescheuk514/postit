@@ -2,15 +2,15 @@
   <section id="post_<%= post.id %>_vote_area" class="vote_area">
     <% if logged_in? %>
       <% if post.voted?(@current_user) %>
-        <%= link_to vote_post_path(post, vote: true), method: "post", remote: true, id: "post_#{post.id}_vote_up" do %>
+        <%= link_to vote_post_path(post, vote: true), method: "post", remote: true, disable_with: "Submitting…", id: "post_#{post.id}_vote_up" do %>
           <span class=" glyphicon glyphicon-chevron-up"></span>
         <% end %>
-        <%= link_to vote_post_path(post, vote: false), method: "post", remote: true, id:
+        <%= link_to vote_post_path(post, vote: false), method: "post", remote: true, disable_with: "Submitting…", id:
 "post_#{post.id}_vote_down" do %>
           <span class=" glyphicon glyphicon-chevron-down"></span>
         <% end %>
       <% else %>
-          <%= link_to "Undo vote", undo_vote_post_path(post), method: "delete", remote: true, id: "post_#{post.id}_vote_undo" %>
+          <%= link_to "Undo vote", undo_vote_post_path(post), method: "delete", remote: true, disable_with: "Submitting…", id: "post_#{post.id}_vote_undo" %>
       <% end %>
     <% end %>
   </section>
