@@ -42,16 +42,26 @@ class PostsController < ApplicationController
   def vote
     @vote = @post.votes.create(user_id: @current_user.id, vote: params[:vote])
 
-    unless @vote.valid?
-      flash[:warning] = "You've voted before."
+    respond_to do |format|
+      format.html do
+        unless @vote.valid?
+          flash[:warning] = "You've voted before."
+        end
+        redirect_to :back
+      end
+      format.js
     end
-    redirect_to :back
   end
 
   def undo_vote
     @post.votes.where(user_id: @current_user.id).destroy_all
-    flash[:success] = "Undo voting"
-    redirect_to :back
+    respond_to do |format|
+      format.html do
+        flash[:success] = "Undo voting"
+        redirect_to :back
+      end
+      format.js
+    end
   end
 
   private
