@@ -1,0 +1,4 @@
+$('#comment_<%= @comment.id %>_vote').html('<%= pluralize(@comment.total_votes, "points") %>')
+$('#comment_<%= @comment.id %>_vote_up').remove()
+$('#comment_<%= @comment.id %>_vote_down').remove()
+$('#comment_<%= @comment.id %>_vote_area').append('<small><%= link_to "Undo vote", undo_vote_post_comment_path(@comment.post, @comment), method: "delete", remote: true, id: "comment_#{@comment.id}_vote_undo" %></small>')

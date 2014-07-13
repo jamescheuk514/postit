@@ -1,16 +1,16 @@
 <div class="well">
-	<section class="vote">
+	<section id="comment_<%= comment.id %>_vote_area" class="vote_area">
 		<% if logged_in? %>
-			<% if comment.votes.where(user_id: @current_user.id).blank? %>
-				<%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: "post" do %>
+			<% if comment.voted?(@current_user) %>
+				<%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: "post", remote: true, id: "comment_#{comment.id}_vote_up" do %>
 					<span class=" glyphicon glyphicon-chevron-up"></span>
 				<% end %>
-				<%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: "post" do %>
+				<%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: "post", remote: true, id: "comment_#{comment.id}_vote_down" do %>
 					<span class=" glyphicon glyphicon-chevron-down"></span>
 				<% end %>
 			<% else %>
 				<small>
-					<%= link_to "Undo vote", undo_vote_post_comment_path(comment.post, comment), method: "delete", data: { confirm: "Are you sure?" } %>
+					<%= link_to "Undo vote", undo_vote_post_comment_path(comment.post, comment), method: "delete", remote: true, id: "comment_#{comment.id}_vote_undo" %>
 				</small>
 			<% end %>
 		<% end %>
@@ -20,7 +20,9 @@
 	</p>
 	<p>
 		<small class="quiet">
-			<%= pluralize(comment.total_votes, "points") %>
+			<span id="comment_<%= comment.id %>_vote">
+				<%= pluralize(comment.total_votes, "points") %>
+			</span>
 			by <%= comment.creator.username %>
 			<%= distance_of_time_in_words_to_now(comment.created_at) %> ago
 		</small>

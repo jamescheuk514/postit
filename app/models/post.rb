@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 	include VotesHelper
-	
+
 	belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
 
   has_many :comments, dependent: :destroy
@@ -15,5 +15,9 @@ class Post < ActiveRecord::Base
 	validates :description, presence: true
 
 	validates :creator, presence: true
+
+	def voted?(current_user)
+		self.votes.where(user_id: current_user.id).blank?
+	end
 
 end
