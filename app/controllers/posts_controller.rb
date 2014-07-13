@@ -66,8 +66,9 @@ class PostsController < ApplicationController
 
   private
 	def find_post
-		@post = Post.find(params[:id])
-	end
+		@post = Post.find_by(slug: params[:id])
+	  binding.pry
+  end
 
 	def post_params
 		params.require(:post).permit(:title, :url, :description, category_ids: [])

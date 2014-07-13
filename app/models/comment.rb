@@ -9,7 +9,4 @@ class Comment < ActiveRecord::Base
 	validates :post, presence: true
 	validates :creator, presence: true
 
-	def voted?(current_user)
-		self.votes.where(user_id: current_user.id).blank?
-	end
 end

@@ -12,4 +12,7 @@ module VotesHelper
     self.votes.where(vote: false).size
   end
 
+  def voted?(current_user)
+    self.votes.where(user_id: current_user.id).blank?
+  end
 end

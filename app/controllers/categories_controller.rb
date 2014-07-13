@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 	before_action :signed_in_user, only: [:new, :create]
 
 	def show
-		@category = Category.find(params[:id])
+		@category = Category.find_by(slug: params[:id])
 	end
 
 	def new
