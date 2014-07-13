@@ -5,8 +5,5 @@ class Comment < ActiveRecord::Base
 	belongs_to :post
 	has_many :votes, as: :voteable
 
-	validates :body, presence: true
-	validates :post, presence: true
-	validates :creator, presence: true
-
+	validates_presence_of :creator, :body, :post
 end

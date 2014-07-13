@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 	before_action :request_admin, only: [:new, :create]
 
 	def show
-		@category = Category.find_by(slug: params[:id])
+		@category = Category.find_by_slug(params[:id])
 	end
 
 	def new

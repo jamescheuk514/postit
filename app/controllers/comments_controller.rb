@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :signed_in_user
 
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.find_by_slug(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.creator = @current_user
 
@@ -46,12 +46,13 @@ class CommentsController < ApplicationController
         flash[:success] = "Undo voting"
         redirect_to :back
       end
-      format.js 
+      format.js
     end
   end
 
 
   private
+  
   def find_comment
     @comment = Comment.find(params[:id])
   end

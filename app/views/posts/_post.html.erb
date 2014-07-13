@@ -32,7 +32,7 @@
       by <%=link_to post.creator.username, user_path(post.creator) %>
       <%= distance_of_time_in_words_to_now(post.created_at) %> ago |
       <%= link_to pluralize(post.comments.size, "comment"), post_path(post)%> |
-      <% if logged_in? && current_user?(post.creator) %>
+      <% if logged_in? && (current_user?(post.creator) || current_user.admin?) %>
         <%= link_to 'edit', edit_post_path(post) %>
       <% end %>
     </small>

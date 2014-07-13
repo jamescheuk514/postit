@@ -6,4 +6,5 @@ class Vote < ActiveRecord::Base
   validates :creator, presence: true
   validates :voteable_type, presence: true
   validates :voteable_id, presence: true
+  validates_uniqueness_of :creator, :voteable_type, :voteable_id 
 end
