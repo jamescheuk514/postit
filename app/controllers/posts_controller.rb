@@ -25,14 +25,10 @@ class PostsController < ApplicationController
   end
 
 	def new
-    @post = Post.new
 	end
 
   def insta_new
-    @post = Post.new
-
   end
-
 
 	def create
     if params.include?(:page_url)
@@ -41,6 +37,7 @@ class PostsController < ApplicationController
                               timeout: 5,
                               html_content_only: true)
       @post = Post.new(title: page.title, url: page.url, description: page.description)
+      binding.pry
       render :new
     else
       @post = Post.new(post_params)
