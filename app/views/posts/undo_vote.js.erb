@@ -1,3 +1,3 @@
-$('#post_<%= @post.id %>_vote').html('<%= pluralize(@post.total_votes, "points") %>');
-$('#post_<%= @post.id %>_vote_undo').remove();
-$('#post_<%= @post.id %>_vote_area').append('<%= link_to vote_post_path(@post, vote: true), method: "post", remote: true, disable_with: "Submitting…", id: "post_#{@post.id}_vote_up" do %><span class=" glyphicon glyphicon-chevron-up"></span><% end %><%= link_to vote_post_path(@post, vote: false), method: "post", remote: true, disable_with: "Submitting…", id:"post_#{@post.id}_vote_down" do %><span class=" glyphicon glyphicon-chevron-down"></span><% end %>')
+$('#post_<%= @post.slug %>_vote').html('<%= pluralize(@post.total_votes, "points") %>');
+$('#post_<%= @post.slug %>_vote_undo').remove();
+$('#post_<%= @post.slug %>_vote_area').append('<%= link_to vote_post_path(@post, vote: true), method: "post", remote: true, disable_with: "Submitting…", id: "post_#{@post.slug}_vote_up" do %><span class=" glyphicon glyphicon-chevron-up"></span><% end %><%= link_to vote_post_path(@post, vote: false), method: "post", remote: true, disable_with: "Submitting…", id:"post_#{@post.slug}_vote_down" do %><span class=" glyphicon glyphicon-chevron-down"></span><% end %>')

@@ -1,4 +1,4 @@
-$('#post_<%= @post.id %>_vote').html('<%= pluralize(@post.total_votes, "points") %>');
-$('#post_<%= @post.id %>_vote_up').remove();
-$('#post_<%= @post.id %>_vote_down').remove();
-$('#post_<%= @post.id %>_vote_area').append('<%= link_to "Undo vote", undo_vote_post_path(@post), method: "delete", remote: true, disable_with: "Submitting…", id: "post_#{@post.id}_vote_undo" %>');
+$('#post_<%= @post.slug %>_vote').html('<%= pluralize(@post.total_votes, "points") %>');
+$('#post_<%= @post.slug %>_vote_up').remove();
+$('#post_<%= @post.slug %>_vote_down').remove();
+$('#post_<%= @post.slug %>_vote_area').append('<%= link_to "Undo vote", undo_vote_post_path(@post), method: "delete", remote: true, disable_with: "Submitting…", id: "post_#{@post.slug}_vote_undo" %>');

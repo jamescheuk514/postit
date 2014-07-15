@@ -11,7 +11,7 @@
   </p>
   <p>
     <small class="quiet">
-      <span id="post_<%= post.id %>_vote">
+      <span id="post_<%= post.slug %>_vote">
         <%= pluralize(post.total_votes, "points") %>
       </span>
       by <%=link_to post.creator.username, user_path(post.creator) %>

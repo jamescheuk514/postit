@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  include VotesHelper
+
   before_action :find_comment, only: [:vote, :undo_vote]
   before_action :signed_in_user
 
@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
 
 
   private
-  
+
   def find_comment
     @comment = Comment.find(params[:id])
   end

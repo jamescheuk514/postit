@@ -14,5 +14,5 @@
 </section>
 
 <section>
-  <%= render partial: @post.comments, locals: { post:@post } %>
+  <%= render partial: @post.reload.comments, locals: { post:@post } %>
 </section>

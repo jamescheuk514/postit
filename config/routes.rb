@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     end
   end
 
-
+  get 'insta_new', to: "posts#insta_new"
+  post 'insta_new', to: "posts#create"
   resources :categories, only: [:show, :new, :create]
 
 

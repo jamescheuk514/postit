@@ -1,30 +1,55 @@
 class PostsController < ApplicationController
-  include VotesHelper
+
+  before_action :set_new_post, only: [:new, :insta_new]
   before_action :find_post, only: [:show, :edit, :update, :vote, :undo_vote]
   before_action :signed_in_user, except: [:index, :show]
 
   def index
-    @posts = Post.order("created_at DESC").all
+    @posts = Post.all.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+      format.xml { render xml: @posts }
+    end
   end
 
 	def show
 	  @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @post }
+      format.xml { render xml: @post }
+    end
   end
 
 	def new
     @post = Post.new
 	end
 
-	def create
-    @post = Post.new(post_params)
-    @post.creator = @current_user
+  def insta_new
+    @post = Post.new
 
-    if @post.save
-      flash[:success] = "Your post was created."
-      redirect_to posts_path
-    else
+  end
+
+
+	def create
+    if params.include?(:page_url)
+      page = MetaInspector.new(params[:page_url])
+      @post = Post.new(title: page.title, url: page.url, description: page.description)
       render :new
+    else
+      @post = Post.new(post_params)
+      @post.creator = @current_user
+      if @post.save
+        flash[:success] = "Your post was created."
+        redirect_to posts_path
+      else
+        render :new
+      end
     end
+
   end
 
   def edit
@@ -65,12 +90,15 @@ class PostsController < ApplicationController
   end
 
   private
+  def set_new_post
+    @post = Post.new
+  end
 
   def find_post
-		@post = Post.find_by(slug: params[:id])
+		@post = Post.find_by_slug(params[:id])
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :url, :description, category_ids: [])
+		params.require(:post).permit(:title, :url, :description, :page_url, category_ids: [] )
 	end
 end
