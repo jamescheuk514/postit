@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
 
 	sluggable_column :username
 
+	include PgSearch
+  multisearchable :against => :username
 end

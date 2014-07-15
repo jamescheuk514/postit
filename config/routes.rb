@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :create, :edit, :update]
 
-  get 'register', to: "users#new"
-  get 'login', to: "sessions#new"
-  post 'login', to: "sessions#create"
-  get 'logout', to: "sessions#destroy"
 
   resources :posts, except: [:destroy] do
     member do
@@ -21,10 +17,15 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'insta_new', to: "posts#insta_new"
-  post 'insta_new', to: "posts#create"
   resources :categories, only: [:show, :new, :create]
 
+  get 'register', to: "users#new"
+  get 'login', to: "sessions#new"
+  post 'login', to: "sessions#create"
+  get 'logout', to: "sessions#destroy"
+  get 'insta_new', to: "posts#insta_new"
+  post 'insta_new', to: "posts#create"
+  post 'query', to:"searchs#query"
 
 end
 

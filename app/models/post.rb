@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 	include Voteable
 	include Sluggable
+	include PgSearch
 
 	belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
   has_many :comments, dependent: :destroy
@@ -12,4 +13,13 @@ class Post < ActiveRecord::Base
 	validates_presence_of :creator, :title, :url
 
 	sluggable_column :title
+	pg_search_scope :search, :associated_against => {
+										:creator => :username,
+										:categories => :name
+								  },:against => {
+								    :title => 'A',
+								    :description => 'B'
+								  }, :using => {
+                    :tsearch => {:prefix => true, :dictionary => "english", :any_word => true}
+									}
 end

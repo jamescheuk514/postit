@@ -36,7 +36,10 @@ class PostsController < ApplicationController
 
 	def create
     if params.include?(:page_url)
-      page = MetaInspector.new(params[:page_url])
+      page = MetaInspector.new(params[:page_url],
+                              allow_redirections: :all,
+                              timeout: 5,
+                              html_content_only: true)
       @post = Post.new(title: page.title, url: page.url, description: page.description)
       render :new
     else
