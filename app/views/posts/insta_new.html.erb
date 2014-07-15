@@ -1,18 +1,18 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">insta_post</h3>
+    <h3 class="panel-title">insta post</h3>
   </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-6">
         <%= form_tag '/insta_new' do %>
 
-          <%= label_tag :page_url %>
+          <%= label_tag 'url' %>
           <div class="input-group">
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-link"></span>
             </span>
-            <%= url_field_tag :page_url%>
+              <%= url_field_tag  "page_url", nil, :class => 'form-control' %>
           </div></br>
           <%= submit_tag "submit", class:"btn btn-primary" %>
         <% end %>
