@@ -52,7 +52,7 @@ end
 
 gem "figaro", '1.0.0.rc1'
 
-gem "voteable", path: "/home/james/Desktop/gem/voteable-gem"
-gem 'sluggable', path: "/home/james/Desktop/gem/sluggable-gem"
+# gem "voteable", path: "/home/james/Desktop/gem/voteable-gem"
+# gem 'sluggable', path: "/home/james/Desktop/gem/sluggable-gem"
 
 gem 'metainspector'

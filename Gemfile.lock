@@ -1,13 +1,3 @@
-PATH
-  remote: /home/james/Desktop/gem/sluggable-gem
-  specs:
-    sluggable (0.0.0)
-
-PATH
-  remote: /home/james/Desktop/gem/voteable-gem
-  specs:
-    voteable (0.0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -166,8 +156,6 @@ DEPENDENCIES
   rails_12factor
   sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
-  sluggable!
   spring
   turbolinks
   uglifier (>= 1.3.0)
-  voteable!
