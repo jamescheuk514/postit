@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'logout', to: "sessions#destroy"
   get 'insta_new', to: "posts#insta_new"
   post 'insta_new', to: "posts#create"
+  get 'query', to: 'searchs#query_redirect'
   post 'query', to:"searchs#query"
 
 end
