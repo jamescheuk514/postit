@@ -1,0 +1,11 @@
+.well
+	= render partial: '/comments/comment_vote_area', locals: { comment: comment }
+	%p= comment.body
+	%p
+		%small.quiet
+			%span{:id => "comment_#{comment.id}_vote" }
+				= pluralize(comment.total_votes, "points")
+			by
+			= comment.creator.username
+			= distance_of_time_in_words_to_now(comment.created_at)
+			ago

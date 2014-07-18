@@ -57,3 +57,5 @@ gem "figaro", '1.0.0.rc1'
 # gem 'sluggable', path: "/home/james/Desktop/gem/sluggable-gem"
 
 gem 'metainspector'
+
+gem 'haml'

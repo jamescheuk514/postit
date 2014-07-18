@@ -1,0 +1,23 @@
+= form_for @post do |f|
+  = render "shared/errors", object: @post
+  .row
+    .col-xs-12.col-sm-8.col-md-8
+      = f.label :title
+      .input-group
+        %span.input-group-addon @
+        = f.text_field :title, class:"form-control"
+      %br
+      = f.label :url
+      .input-group
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-link
+        = f.url_field :url, class:"form-control"
+      %br
+      = f.label :description
+      .input-group
+        %span.glyphicon.glyphicon-pencil
+        = f.text_area :description,cols: 60, rows: 5, class:"form-control"
+      = collection_check_boxes :post, :category_ids, Category.all, :id, :name do |b|
+        .checkbox= b.label { b.check_box(class:"checkbox") + b.text }
+
+      = f.submit 'submit', class:"btn btn-primary"

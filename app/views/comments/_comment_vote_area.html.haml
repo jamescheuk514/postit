@@ -1,0 +1,9 @@
+%section.vote_area{:id =>"comment_#{comment.id}_vote_area"}
+  - if logged_in?
+    - if comment.voted?(@current_user)
+      = link_to vote_post_comment_path(comment.post, comment, vote: true), method: "post", remote: true, disable_with: "Submitting…", id: "comment_#{comment.id}_vote_up" do
+        %span.glyphicon.glyphicon-chevron-up
+      = link_to vote_post_comment_path(comment.post, comment, vote: false), method: "post", remote: true, disable_with: "Submitting…", id: "comment_#{comment.id}_vote_down" do
+        %span.glyphicon.glyphicon-chevron-down
+    - else
+      = link_to "Undo vote", undo_vote_post_comment_path(comment.post, comment), method: "delete", remote: true, disable_with: "Submitting…", id: "comment_#{comment.id}_vote_undo"

@@ -1,0 +1,14 @@
+.panel.panel-primary
+  .panel-heading
+    .h3.panel-title insta post
+  .panel-body
+    .row
+      .col-xs-12.col-sm-6.col-md-6
+        = form_tag '/insta_new' do
+          = label_tag 'url'
+          .input-group
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-link
+            = text_field_tag  "page_url", nil, class:'form-control'
+          %br
+          = submit_tag "grep()", class:"btn btn-primary"

@@ -1,0 +1,9 @@
+%section{:id => "post_#{post.slug}_vote_area", :class => "vote_area"}
+  - if logged_in?
+    -if post.voted?(@current_user)
+      = link_to vote_post_path(post, vote: true), method: "post", remote: true, id: "post_#{post.slug}_vote_up" do
+        %span.glyphicon.glyphicon-chevron-up
+      = link_to vote_post_path(post, vote: false), method: "post", remote: true, id: "post_#{post.slug}_vote_down" do
+        %span.glyphicon.glyphicon-chevron-down
+    - else
+      = link_to "Undo vote", undo_vote_post_path(post), method: "delete", remote: true, id: "post_#{post.slug}_vote_undo"

@@ -1,0 +1,22 @@
+.row
+  .col-xs-12.col-sm-6.col-md-6
+    = form_for @user do |f|
+      = render "shared/errors", object: @user
+      = f.label :username
+      .input-group
+        %span.input-group-addon @
+        = f.text_field :username, class:"form-control"
+      %br
+      = f.label :password
+      .input-group
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-asterisk
+        = f.password_field :password, class:"form-control"
+      %br
+      = f.label :password_confirmation
+      .input-group
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-asterisk
+        = f.password_field :password_confirmation, class:"form-control"
+      %br
+      = f.submit "Submit", class:"btn btn-primary"

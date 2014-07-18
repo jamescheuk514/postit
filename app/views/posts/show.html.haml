@@ -1,0 +1,12 @@
+= render @post
+= link_to "Go back to all posts", posts_path
+%section
+  = form_for [@post, @comment] do |f|
+    = render 'shared/errors', object: @comment
+    = f.label :body, "Comment"
+    .input-group
+      %span.glyphicon.glyphicon-pencil
+      = f.text_area :body,cols: 60, rows: 5, class:"form-control"
+    = f.submit "add comment", class:"btn btn-primary"
+%section
+  = render @post.reload.comments, :post => @post

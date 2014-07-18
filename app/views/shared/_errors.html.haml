@@ -1,0 +1,11 @@
+- if object.errors.any?
+  .alert.alert-danger.alert-dismissible{:role => "alert"}
+    %button.close{:type => "button", :data => {:dismiss => "alert"} }
+      %span{:aria => {:hidden =>"true"}} &times;
+      %span.sr-only Close
+    %h5
+      You have
+      = pluralize(object.errors.size ,"error")
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li= msg

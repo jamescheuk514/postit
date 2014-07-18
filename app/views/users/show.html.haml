@@ -1,0 +1,30 @@
+%h1= @user.username
+%ul#userContentTabs.nav.nav-tabs{:role =>"tablist"}
+  %li.active
+    %a{:href => "#profile", :data => {:toggle => "tab"}} Profile
+  %li
+    %a{:href => "#posts", :data => {:toggle => "tab"}} Posts
+  %li
+    %a{:href => "#comments", :data => {:toggle => "tab"}} Comments
+#tab-content.tab-content
+  .tab-pane.fade.active#profile
+    = image_tag("InProgress.jpg")
+  .tab-pane.fade#posts
+    - if @user.posts.blank?
+      = image_tag("InProgress.jpg")
+    - else
+      - @user.posts.each do |post|
+        = render post
+  .tab-pane.fade#comments
+    - if @user.comments.blank?
+      = image_tag("InProgress.jpg")
+    - else
+      - @user.comments.each do |comment|
+        %section
+          replied to the post:
+          = comment.post.title
+          = render comment
+:javascript
+  $(function () {
+    $('#userContentTabs a:last').tab('show')
+  });

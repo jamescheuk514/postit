@@ -1,0 +1,19 @@
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title login
+  .panel-body
+    .row
+      .col-xs-12.col-sm-6.col-md-6
+        = form_tag '/login' do
+          = label_tag :username
+          .input-group
+            .span.input-group-addon @
+            = text_field_tag :username, params[:username], class:"form-control"
+          %br
+          = label_tag :password
+          .input-group
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-asterisk
+            = password_field_tag :password, params[:password], class:"form-control"
+          %br
+          = submit_tag "login", class:"btn btn-primary"

@@ -1,0 +1,38 @@
+%nav.navbar.navbar-default.container-fluid{:role => "navigation" }
+	.container-fluid
+		.navbar-header
+			%button.navbar-toggle{:type => "button", :data => {:toggle =>"collapse" , :target =>"#bs-example-navbar-collapse-1" }}
+				%span.sr-onlyToggle navigation
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			= link_to "Postit!", root_path,  class:"navbar-brand"
+		.collapse.navbar-collapse#bs-example-navbar-collapse-1
+			%ul.nav.navbar-nav
+				%li.active
+					= link_to insta_new_path do
+						insta
+						%small (beta)
+				%li
+					= link_to "new", new_post_path
+
+				%li.dropdown
+					%a.dropdown-toggle{ :href => "#", :data => { :toggle => "dropdowncateory"}}
+						%span.caret
+					%ul.dropdown-menu{:role => "menu"}
+						= render "categories/list"
+			= form_tag '/query', class:"navbar-form navbar-left", role:"search" do
+				.form-group
+					= text_field_tag  "query", nil, class:"form-control", placeholder:"search"
+				= submit_tag "submit", method:'post', class:"btn btn-default", :disable_with => "Processing"
+			%ul.nav.navbar-nav.navbar-right
+				- if logged_in?
+					%p.navbar-text.navbar-right
+						%small
+							signed in as
+							= @current_user.username
+					%li= link_to "edit user", edit_user_path(@current_user)
+					%li= link_to "logout", logout_path
+				- else
+					%li= link_to "register",register_path
+					%li= link_to "login", login_path
