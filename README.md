@@ -3,6 +3,9 @@
   This is the application I build during the 2nd course for Tealeaf Academy. This is a Reddit-like application, with all features built from scratch without relying on any external libraries or gems.
 </p>
 
+<h1>Live Demo:</h1>
+<a href="http://jccf-postit.herokuapp.com/">click here.</a>
+
 <h4>Features:<h3>
 <div>
   <ul>
@@ -128,5 +131,3 @@
     </li>
   </ul>
 </div>
-<h1>Live Demo:</h1>
-<a href="http://jccf-postit.herokuapp.com/">click here.</a>
