@@ -1,29 +1,132 @@
-== Getting Started
+<h1>Postit</h1>
+<p>
+  This is the application I build during the 2nd course for Tealeaf Academy. This is a Reddit-like application, with all features built from scratch without relying on any external libraries or gems.
+</p>
 
-1. Make sure you have rails version 4. Type "rails -v" to make sure.
-2. From this project directory, do "bundle install --without production"
-3. To start the server "rails server".
-4. Navigate your browser to localhost:3000.
+<h4>Features:<h3>
+<div>
+  <ul>
+    <li>
+      Built with Ruby 2 and Rails 4
+    </li>
+    <li>
+      Create and edit posts
+    </li>
+    <li>
+      Comment and vote on posts
+    </li>
+    <li>
+      Authentication
+    </li>
+    <li>
+      Tracks who created every comment, vote, and post
+    </li>
+    <li>
+      Organize posts by category
+    </li>
+    <li>
+      View and edit user profiles
+    </li>
+    <li>
+      Uses roles to allow admins to edit all posts
+    </li>
+    <li>
+      Uses ajax to vote
+    </li>
+    <li>
+      Slugs as URLs
+    </li>
+    <li>
+      Display time based on user specified time zone
+    </li>
+    <li>
+      Deployed to Heroku
+    </li>
+    <li>
+      Uses gem to extract common logic
+    </li>
+    <li>
+      2-factor authentication
+    </li>
+  </ul>
+</div>
+<div>
 
-
-== Setting up with Git
-
-1. Instantiate this directory as a git repository with "git init".
-2. Go to github.com, create a new repository, then follow instructions on how to add a remote repository that links to github.
-3. Remember, you have to "git add" changes to ready it for a commit, then "git commit" to commit those changes locally, then "git push origin master" to push it to the remote "origin" repository, which is the previously created github.com repository.
-
-== Deploying to Heroku
-
-1. Download the Heroku Toolbelt.
-2. Go to Heroku.com and register.
-3. Issue "heroku login" to authenticate, with the credentials from previous step. Make sure it's a git repository, by issuing "git init", and also "git add", "git commit" your files.
-4. Then "heroku create" to create this app on heroku. This command also adds a "heroku" remote repository that you can push to.
-5. To deploy, issue "git push heroku master".
-6. You may need to run migrations on heroku afterwards, with "heroku run rake db:migrate".
-7. Other helpful heroku commands:
-  - heroku logs
-  - heroku logs -t
-  - heroku rename
-  - heroku restart
-  - heroku run console
-  - heroku help
+  <h4>What I have learned:</h3>
+  <ul>
+    <li>
+      Introduction to relational database
+    </li>
+    <li>
+      Basic database associations: 1:M and M:M
+    </li>
+    <li>
+      ActiveRecord
+    </li>
+    <li>
+      Resourceful routing
+    </li>
+    <li>
+      REST
+    </li>
+    <li>
+      MVC - models, views and controllers
+    </li>
+    <li>
+      Request/reponse processing
+    </li>
+    <li>
+      Partials
+    </li>
+    <li>
+      Helpers
+    </li>
+    <li>
+      Filters
+    </li>
+    <li>
+      Rails forms
+    </li>
+    <li>
+      Validations
+    </li>
+    <li>
+      Strong parameters
+    </li>
+    <li>
+      Callbacks
+    </li>
+    <li>
+      Authentication from scratch
+    </li>
+    <li>
+      Time zones
+    </li>
+    <li>
+      Simple roles
+    </li>
+    <li>
+      Deployment
+    </li>
+    <li>
+      Polymorphic associations
+    </li>
+    <li>
+      Ajax, the Rails way
+    </li>
+    <li>
+      Pretty URLs
+    </li>
+    <li>
+      Building APIs
+    </li>
+    <li>
+      Creating and publishing your first rubygem
+    </li>
+    <li>
+      Working with Twilio
+    </li>
+  </ul>
+</div>
+<h1>Live Demo:</h1>
+<a href="http://jccf-postit.herokuapp.com/">click here.</a>
